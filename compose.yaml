@@ -1,20 +1,20 @@
 services:
   database:
-    build: /postgres
+    build: ./postgres
     network_mode: host
     environment:
       - POSTGRES_PASSWORD=khalil
     restart: always
 
   backend:
-    build: /backend
+    build: ./backend
     network_mode: host
     restart: always
     depends_on:
       - database
 
   frontend:
-    build: /frontend
+    build: ./frontend
     network_mode: host
     restart: always
     depends_on:
@@ -22,7 +22,7 @@ services:
 
   
   nginx:
-    build: /nginx-server
+    build: ./nginx-server
     network_mode: host
     restart: always
     depends_on:
